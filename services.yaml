@@ -1,0 +1,11 @@
+services:
+
+  photo_service:
+    class: App\Services\PhotoService
+    arguments:
+      - 'argument_1'
+      - 'argument_2'
+  my_controller:
+    class: App\Controllers\ProductController
+    arguments:
+      - '@photo_service'
