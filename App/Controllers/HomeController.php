@@ -8,7 +8,7 @@ class HomeController
 {
     public function __construct(public Environment $twig){}
     public function index (): Response {
-        $template = $this->twig->load('Home/Index.html.twig');
+        $template = $this->twig->load('Home.html.twig');
         $content = $template->render();
         return new Response($content);
     }
