@@ -8,6 +8,7 @@ use Symfony\Component\Routing\RequestContext;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+
 $request = Request::createFromGlobals();
 $routes = include_once('routes.php');
 $context = new RequestContext();
