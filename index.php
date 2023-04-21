@@ -5,16 +5,17 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+// use Symfony\Component\DependencyInjection\ContainerBuilder;
+// use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Config\FileLocator;
 
+/*
 $locator = new FileLocator(__DIR__);
 $loader = new YamlFileLoader(new ContainerBuilder(), $locator);
-
 $container = new ContainerBuilder();
 $loader->load('services.yaml');
 $container->compile();
+*/
 
 $request = Request::createFromGlobals();
 $routes = include_once('routes.php');

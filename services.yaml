@@ -1,14 +1,14 @@
-services:
+#services:
 
-  photo_service:
-    class: App\Services\PhotoService
-    arguments:
-      - 'argument_1'
-      - 'argument_2'
-  product_controller:
-    class: App\Controllers\ProductController
-    arguments:
-      - '@photo_service'
+#  photo_service:
+#    class: App\Services\PhotoService
+#    arguments:
+#      - 'argument_1'
+#      - 'argument_2'
+#  product_controller:
+#    class: App\Controllers\ProductController
+#    arguments:
+#      - '@photo_service'
 #  twig:
 #    class: Twig\Environment
 #    arguments: [ '@twig.loader.filesystem', { debug: true } ]
