@@ -9,12 +9,11 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Config\FileLocator;
 
-// Cargar el archivo de configuración YAML del contenedor
 $locator = new FileLocator(__DIR__);
 $loader = new YamlFileLoader(new ContainerBuilder(), $locator);
-$loader->load('services.yaml');
-// Construir el contenedor de servicios
+
 $container = new ContainerBuilder();
+$loader->load('services.yaml');
 $container->compile();
 
 $request = Request::createFromGlobals();
@@ -31,5 +30,6 @@ try {
     $response = new Response('Not Found', 404);
 } catch (\Exception $e) {
     $response = new Response('An error occurred', 500);
+    echo $e->getMessage();
 }
 $response->send();
