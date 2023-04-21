@@ -5,7 +5,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
-
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 $request = Request::createFromGlobals();
 $routes = include_once('routes.php');
 $context = new RequestContext();
@@ -16,10 +18,11 @@ $matcher = new UrlMatcher($routes, $context);
 try {
     $parameters = $matcher->match($request->getPathInfo());
     $response = call_user_func($parameters['_controller'], $request);
-} catch (\Symfony\Component\Routing\Exception\ResourceNotFoundException $e) {
-    $response = new Response('Not Found', 404);
+} catch (ResourceNotFoundException $e) {
+    $view = (new Environment(new FilesystemLoader(__DIR__ . '/Views')))->load('404.html.twig');
+    $response = new Response($view->render(), 404);
 } catch (\Exception $e) {
     $response = new Response('An error occurred', 500);
-    echo $e->getMessage();
+    // echo $e->getMessage();
 }
 $response->send();
