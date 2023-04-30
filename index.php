@@ -8,6 +8,21 @@ use Symfony\Component\Routing\RequestContext;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use App\Config\DoctrineConfig;
+use Dotenv\Dotenv;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+try {
+    $doctrineConfig = new DoctrineConfig($dotenv);
+    $entityManager = $doctrineConfig->getEntityManager();
+
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+
+// Usa $entityManager para trabajar con tus entidades de Doctrine...
 
 $request = Request::createFromGlobals();
 $routes = include_once('routes.php');

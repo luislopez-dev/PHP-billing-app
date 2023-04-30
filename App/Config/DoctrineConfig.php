@@ -3,21 +3,28 @@
 namespace App\Config;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Exception;
-use Doctrine\ORM\Tools\Setup;
-use Dotenv\Dotenv;
+use Doctrine\ORM\Exception\MissingMappingDriverImplementation;
+use Doctrine\ORM\ORMSetup;
 use Doctrine\ORM\EntityManager;
+use Dotenv\Dotenv;
+
 class DoctrineConfig
 {
-    private readonly Dotenv $dotenv;
+    private Dotenv $dotenv;
     private EntityManager $entityManager;
 
+    /**
+     * @throws Exception|MissingMappingDriverImplementation
+     */
     public function __construct()
     {
-        $this->dotenv = Dotenv::createImmutable(__DIR__);
+        $this->dotenv = Dotenv::createImmutable(__DIR__ . './../../');
+        $this->setupEntityManager();
     }
 
     /**
      * @throws Exception
+     * @throws MissingMappingDriverImplementation
      */
     private function setupEntityManager(): void {
         $this->dotenv->load();
@@ -27,20 +34,18 @@ class DoctrineConfig
         $dbPassword = $_ENV['DB_PASSWORD'];
         $dbName = $_ENV['DB_NAME'];
 
-        $connection = [
+        $config = ORMSetup::createAttributeMetadataConfiguration(
+            paths: [__DIR__, '/App/Entities'],
+            isDevMode: true
+        );
+        $connection = DriverManager::getConnection([
             'driver' => 'pdo_mysql',
             'host' => $dbHost,
             'dbname' => $dbName,
             'user' => $dbUsername,
             'password' => $dbPassword
-        ];
-
-        $config = Setup::createAttributeMetadataConfiguration(
-            [__DIR__, '/App/Entities'],
-            true
-        );
-
-        $this->entityManager = DriverManager::getConnection($connection, $config);
+        ]);
+        $this->entityManager = new EntityManager($connection, $config);
     }
 
     public function getEntityManager(): EntityManager {
