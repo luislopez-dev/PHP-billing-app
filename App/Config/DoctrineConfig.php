@@ -35,7 +35,7 @@ class DoctrineConfig
         $dbName = $_ENV['DB_NAME'];
 
         $config = ORMSetup::createAttributeMetadataConfiguration(
-            paths: [__DIR__, '/App/Entities'],
+            paths: [__DIR__, 'App/Entities'],
             isDevMode: true
         );
         $connection = DriverManager::getConnection([

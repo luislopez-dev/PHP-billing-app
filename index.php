@@ -13,15 +13,6 @@ use Dotenv\Dotenv;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$dotenv = Dotenv::createImmutable(__DIR__);
-try {
-    $doctrineConfig = new DoctrineConfig($dotenv);
-    $entityManager = $doctrineConfig->getEntityManager();
-
-} catch (Exception $e) {
-    echo $e->getMessage();
-}
-
 // Usa $entityManager para trabajar con tus entidades de Doctrine...
 
 $request = Request::createFromGlobals();
@@ -39,6 +30,6 @@ try {
     $response = new Response($view->render(), 404);
 } catch (\Exception $e) {
     $response = new Response('An error occurred', 500);
-    // echo $e->getMessage();
+    echo $e->getMessage();
 }
 $response->send();
