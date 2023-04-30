@@ -2,10 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Entities\Product;
-use App\Interfaces\IPhotoService;
 use App\Interfaces\IProductService;
-use App\Services\ProductService;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Exception\NotSupported;
 use Symfony\Component\HttpFoundation\Response;

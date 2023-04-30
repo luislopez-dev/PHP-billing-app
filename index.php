@@ -1,4 +1,5 @@
 <?php
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Symfony\Component\HttpFoundation\Request;
@@ -8,13 +9,14 @@ use Symfony\Component\Routing\RequestContext;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
-use App\Config\DoctrineConfig;
-use Dotenv\Dotenv;
 
-require_once __DIR__ . '/vendor/autoload.php';
-
-// Usa $entityManager para trabajar con tus entidades de Doctrine...
-
+// Initialize service container
+$containerBuilder = require_once('services.php');
+try {
+    $container = $containerBuilder->build();
+} catch (Exception $e) {
+}
+// Initialize router
 $request = Request::createFromGlobals();
 $routes = include_once('routes.php');
 $context = new RequestContext();
