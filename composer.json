@@ -21,8 +21,7 @@
         "twig/twig": "^3.5",
         "vlucas/phpdotenv": "^5.5",
         "php-di/php-di": "^7.0",
-        "gedmo/doctrine-extensions": "^3.11",
-        "symfony/http-kernel": "^6.0"
+        "gedmo/doctrine-extensions": "^3.11"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6",

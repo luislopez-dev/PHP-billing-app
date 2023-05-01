@@ -55,7 +55,7 @@ class ProductController
             $view = $this->twig->load('404.html.twig');
             return new Response();
         }
-        $view = $this->twig->load('Product/get.html.twig');
+        $view = $this->twig->load('Product/show.html.twig');
         $content = $view->render(['product' => $product]);
         return new Response($content);
     }
