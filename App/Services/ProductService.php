@@ -17,13 +17,15 @@ class ProductService implements IProductService
     {
         $this->entityManager = $entityManager;
     }
-
-    /**
-     * @throws NotSupported
-     */
     public function getProducts() : array|object {
         return $this->entityManager
             ->getRepository(Product::class)
             ->findAll();
+    }
+    public function getProductById(int $id): Product
+    {
+        return $this->entityManager
+                ->getRepository(Product::class)
+                ->find($id);
     }
 }
