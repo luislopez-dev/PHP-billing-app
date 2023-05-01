@@ -18,10 +18,10 @@ $routes->add('Products', new Route('/products', array(
 )));
 
 $routes->add('Product', new Route('/product', array(
-    '_controller' => [$container->get('productController'), 'get']
+    '_controller' => [$container->get('productController'), 'show']
 )));
 
-$routes->add('New Products', new Route('/products/new', array(
+$routes->add('New Products', new Route('/product/new', array(
     '_controller' => [$container->get('productController'), 'new']
 )));
 

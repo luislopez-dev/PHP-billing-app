@@ -30,16 +30,22 @@ class ProductController
         $content = $view->render(['products' => $products]);
         return new Response($content);
     }
-    public function new(Product $product) : Response {
-        return new Response();
+
+    public function new(Request $request) : Response {
+        $view = $this->twig->load('Product/new.html.twig');
+        $content = $view->render([]);
+        return new Response($content);
     }
+
     public function delete(Product $product) : Response {
         return new Response();
     }
+
     public function update(Product $product): Response {
         return new Response();
     }
-    public function get(Request $request): Response {
+
+    public function show(Request $request): Response {
        $id = (int) $request->query->get('id');
         if (empty($id)) {
             throw new \InvalidArgumentException("ID is required");
