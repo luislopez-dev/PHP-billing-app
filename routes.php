@@ -17,7 +17,7 @@ $routes->add('Products', new Route('/products', array(
     '_controller' => [$container->get('productController'), 'index']
 )));
 
-$routes->add('Product', new Route('/products/{id}', array(
+$routes->add('Product', new Route('/product', array(
     '_controller' => [$container->get('productController'), 'get']
 )));
 

@@ -4,7 +4,6 @@ namespace App\Services;
 use App\Entities\Product;
 use App\Interfaces\IProductService;
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Exception\NotSupported;
 
 class ProductService implements IProductService
 {

@@ -40,7 +40,10 @@ class ProductController
         return new Response();
     }
     public function get(Request $request): Response {
-        $id = (int) $request->attributes->get('id');
+       $id = (int) $request->query->get('id');
+        if (empty($id)) {
+            throw new \InvalidArgumentException("ID is required");
+        }
         $product = $this->productService->getProductById($id);
         if (is_null($product)){
             $view = $this->twig->load('404.html.twig');
