@@ -7,6 +7,7 @@ use Doctrine\ORM\Exception\MissingMappingDriverImplementation;
 use Doctrine\ORM\ORMSetup;
 use Doctrine\ORM\EntityManager;
 use Dotenv\Dotenv;
+use Gedmo\Timestampable\TimestampableListener;
 
 class DoctrineConfig
 {
@@ -45,6 +46,7 @@ class DoctrineConfig
             'user' => $dbUsername,
             'password' => $dbPassword
         ]);
+
         $this->entityManager = new EntityManager($connection, $config);
     }
 
