@@ -12,14 +12,19 @@ class Product
     #[ORM\Column(type: 'integer')]
     #[ORM\GeneratedValue]
     private int $id;
+    
     #[ORM\Column(type: 'string')]
     private string $name;
+    
     #[ORM\Column(type: 'string')]
     private string $description;
+    
     #[ORM\Column(type: 'string')]
     private string $imgUrl;
+    
     #[ORM\Column(type: 'integer')]
     private int $stock;
+    
     #[ORM\Column(type: 'integer')]
     private float $price;
 
