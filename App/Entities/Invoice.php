@@ -14,7 +14,7 @@ class Invoice
     private int $id;
     
     #[ORM\Column(type: 'string')]
-    private string $nit; // Clint tax identification number
+    private string $nit; // Client tax identification number
     
     #[ORM\Column(type: 'string')]
     private string $clientName;
