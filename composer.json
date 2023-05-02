@@ -1,5 +1,5 @@
 {
-    "name": "50241/phpapp2",
+    "name": "luis/phpapp2",
     "autoload": {
         "psr-4": {
             "App\\": "App",
