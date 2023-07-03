@@ -1,1 +1,1 @@
-Execute migrations: php doctrine.php orm:schema-tool:update --complete  --force --dump-sql
+Execute migrations: <code>php doctrine.php orm:schema-tool:update --complete  --force --dump-sql</code>
