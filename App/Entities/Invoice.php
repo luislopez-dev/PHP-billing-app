@@ -37,6 +37,9 @@ class Invoice
     #[ORM\Column(type: 'string')]
     private string $payment_status;
 
+    #[ORM\Column(type: 'string')]
+    private string $address;
+
     /**
      * @return int
      */
@@ -181,5 +184,19 @@ class Invoice
         $this->payment_status = $payment_status;
     }
 
+    /**
+     * @return string
+     */
+    public function getAddress(): string
+    {
+        return $this->address;
+    }
 
+    /**
+     * @param string $address
+     */
+    public function setAddress(string $address): void
+    {
+        $this->address = $address;
+    }
 }

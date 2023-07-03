@@ -11,7 +11,7 @@ use Twig\Loader\FilesystemLoader;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 // Initialize service container
-$containerBuilder = require_once('services.php');
+$containerBuilder = require_once('container_builder.php');
 try {
     $container = $containerBuilder->build();
 } catch (Exception $e) {

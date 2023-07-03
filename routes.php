@@ -6,11 +6,11 @@ use Symfony\Component\Routing\Route;
 $routes = new RouteCollection();
 
 $routes->add('Home', new Route('/', array(
-    '_controller' => [$container->get('homeController'), 'index']
+    '_controller' => [$container->get('productController'), 'index']
 )));
 
 $routes->add('Invoices', new Route('/invoices', array(
-    '_controller' => [$container->get('invoiceController'), 'index']
+    '_controller' => [$container->get('invoicingController'), 'index']
 )));
 
 $routes->add('Products', new Route('/products', array(
@@ -23,6 +23,10 @@ $routes->add('Product', new Route('/product', array(
 
 $routes->add('New Products', new Route('/product/new', array(
     '_controller' => [$container->get('productController'), 'new']
+)));
+
+$routes->add('New Invoice', new Route('/invoices/new', array(
+    '_controller' => [$container->get('invoicingController'), 'new']
 )));
 
 return $routes;

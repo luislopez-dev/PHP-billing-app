@@ -1,14 +1,14 @@
 <?php
 
 use DI\ContainerBuilder;
-use App\Controllers\HomeController;
-use App\Controllers\InvoiceController;
+use App\Controllers\InvoicingController;
 use App\Controllers\ProductController;
 use Twig\Environment;
 use App\Config\DoctrineConfig;
 use Dotenv\Dotenv;
-use App\Services\ProductService;
 use Twig\Loader\FilesystemLoader;
+use App\Services\ProductService;
+use App\Services\InvoicingService;
 
 $containerBuilder = new ContainerBuilder();
 
@@ -30,13 +30,14 @@ $containerBuilder->addDefinitions([
         $entityManager = $container->get('entityManager');
         return new ProductService($entityManager);
     },
-    'homeController' => function ($container) {
-        $twig = $container->get('twig');
-        return new HomeController($twig);
+    'invoicingService' => function ($container) {
+        $entityManager = $container->get('entityManager');
+        return new InvoicingService($entityManager);
     },
-    'invoiceController' => function ($container) {
+    'invoicingController' => function ($container) {
         $twig = $container->get('twig');
-        return new InvoiceController($twig);
+        $invoicingService = $container->get('invoicingService');
+        return new InvoicingController($invoicingService, $twig);
     },
     'productController' => function ($container) {
         $twig = $container->get('twig');

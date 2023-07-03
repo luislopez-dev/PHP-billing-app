@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Entities\Product;
+use App\Interfaces\IInvoicingService;
 use App\Interfaces\IProductService;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +13,6 @@ use Twig\Environment;
 
 class ProductController
 {
-    private EntityManager $entityManager;
     private IProductService $productService;
 
     /**
@@ -35,6 +35,10 @@ class ProductController
         $view = $this->twig->load('Product/new.html.twig');
         $content = $view->render([]);
         return new Response($content);
+    }
+
+    public function create(Request $request) : void {
+
     }
 
     public function delete(Product $product) : Response {

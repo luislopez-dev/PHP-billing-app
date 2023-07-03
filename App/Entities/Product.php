@@ -28,6 +28,12 @@ class Product
     #[ORM\Column(type: 'integer')]
     private float $price;
 
+    #[ORM\Column(type: 'string')]
+    private string $brand;
+
+    #[ORM\Column(type: 'integer')]
+    private int $category;
+
     public function getId(): int
     {
         return $this->id;
@@ -75,5 +81,37 @@ class Product
     public function setPrice(float $price): void
     {
         $this->price = $price;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBrand(): string
+    {
+        return $this->brand;
+    }
+
+    /**
+     * @param string $brand
+     */
+    public function setBrand(string $brand): void
+    {
+        $this->brand = $brand;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCategory(): int
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param int $category
+     */
+    public function setCategory(int $category): void
+    {
+        $this->category = $category;
     }
 }
