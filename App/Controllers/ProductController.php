@@ -61,12 +61,12 @@ class ProductController
         return new Response($content);
     }
 
-    public function update(Product $product): Response {
-        return new Response();
-    }
-
     public function create(Request $request) : void {
 
+    }
+
+    public function update(Product $product): Response {
+        return new Response();
     }
 
     public function destroy(Product $product) : Response {

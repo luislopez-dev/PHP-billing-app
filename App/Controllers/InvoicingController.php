@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Entities\Invoice;
 use App\Interfaces\IInvoicingService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,5 +38,13 @@ class InvoicingController
         $view = $this->twig->load('Invoicing/show.html.twig');
         $content = $view->render(['invoice' => $invoice]);
         return new Response($content);
+    }
+
+    public function create(Request $request) : void {
+
+    }
+
+    public function destroy(int $id) : Response {
+        return new Response();
     }
 }
