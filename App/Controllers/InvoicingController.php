@@ -16,8 +16,7 @@ class InvoicingController
 
     public function index(): Response {
         $view = $this->twig->load('Invoicing/Index.html.twig');
-        // $invoices = $this->invoicingService->getInvoices();
-        $invoices = [];
+        $invoices = $this->invoicingService->getInvoices();
         $content = $view->render(['invoices' => $invoices]);
         return new Response($content);
     }
