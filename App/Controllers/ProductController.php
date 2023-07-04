@@ -3,9 +3,7 @@
 namespace App\Controllers;
 
 use App\Entities\Product;
-use App\Interfaces\IInvoicingService;
 use App\Interfaces\IProductService;
-use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -37,16 +35,15 @@ class ProductController
         return new Response($content);
     }
 
-    public function create(Request $request) : void {
-
-    }
-
-    public function delete(Product $product) : Response {
-        return new Response();
-    }
-
-    public function update(Product $product): Response {
-        return new Response();
+    public function edit(Request $request): Response {
+        $id = (int) $request->query->get('id');
+        if (empty($id)) {
+            throw new \InvalidArgumentException("ID is required");
+        }
+        $product = $this->productService->getProductById($id);
+        $view = $this->twig->load('Product/edit.html.twig');
+        $content = $view->render(['product' => $product]);
+        return new Response($content);
     }
 
     public function show(Request $request): Response {
@@ -62,5 +59,17 @@ class ProductController
         $view = $this->twig->load('Product/show.html.twig');
         $content = $view->render(['product' => $product]);
         return new Response($content);
+    }
+
+    public function update(Product $product): Response {
+        return new Response();
+    }
+
+    public function create(Request $request) : void {
+
+    }
+
+    public function destroy(Product $product) : Response {
+        return new Response();
     }
 }

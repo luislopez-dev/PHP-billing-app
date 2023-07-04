@@ -13,20 +13,24 @@ $routes->add('Invoices', new Route('/invoices', array(
     '_controller' => [$container->get('invoicingController'), 'index']
 )));
 
+$routes->add('New Invoice', new Route('/invoices/new', array(
+    '_controller' => [$container->get('invoicingController'), 'new']
+)));
+
 $routes->add('Products', new Route('/products', array(
     '_controller' => [$container->get('productController'), 'index']
 )));
 
-$routes->add('Product', new Route('/product', array(
+$routes->add('Show Product', new Route('/product', array(
     '_controller' => [$container->get('productController'), 'show']
 )));
 
-$routes->add('New Products', new Route('/product/new', array(
+$routes->add('Create Product', new Route('/product/new', array(
     '_controller' => [$container->get('productController'), 'new']
 )));
 
-$routes->add('New Invoice', new Route('/invoices/new', array(
-    '_controller' => [$container->get('invoicingController'), 'new']
+$routes->add('Edit Product', new Route('/product/edit', array(
+    '_controller' => [$container->get('productController'), 'edit']
 )));
 
 return $routes;
