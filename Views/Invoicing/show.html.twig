@@ -1,3 +1,5 @@
 {% extends 'Layout.html.twig' %}
-{% block title %} Invoice {{ }} {% endblock %}
-{% block content %} <h1> Invoice </h1> {% endblock %}
+{% block title %} Invoice {% endblock %}
+{% block content %}
+    <h1> Invoice #{{ invoice.id }} </h1>
+{% endblock %}

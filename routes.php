@@ -13,6 +13,10 @@ $routes->add('Invoices', new Route('/invoices', array(
     '_controller' => [$container->get('invoicingController'), 'index']
 )));
 
+$routes->add('Show Invoice', new Route('/invoice', array(
+    '_controller' => [$container->get('invoicingController'), 'show']
+)));
+
 $routes->add('New Invoice', new Route('/invoices/new', array(
     '_controller' => [$container->get('invoicingController'), 'new']
 )));
