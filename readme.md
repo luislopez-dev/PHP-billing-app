@@ -1,1 +1,1 @@
-Command for execution migrations: <code>php doctrine.php orm:schema-tool:update --complete  --force --dump-sql</code>
+Command for executing migrations: <code>php doctrine.php orm:schema-tool:update --complete  --force --dump-sql</code>
