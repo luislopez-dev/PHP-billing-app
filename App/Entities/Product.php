@@ -31,7 +31,7 @@ class Product
     #[ORM\Column(type: 'string')]
     private string $brand;
 
-    #[ORM\OneToOne(targetEntity: Category::class)]
+    #[ORM\OneToOne(targetEntity: ProductCategory::class)]
     #[ORM\JoinColumn(name: 'category_id', referencedColumnName: 'id')]
     private int $category;
 
