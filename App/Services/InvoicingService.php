@@ -31,4 +31,24 @@ class InvoicingService implements IInvoicingService
             ->find($id);
     }
 
+    public function deleteInvoice(int $id): void
+    {
+        $invoiceReference = $this->entityManager
+            ->getReference(Invoice::class, $id);
+        $this->entityManager->remove($invoiceReference);
+        $this->entityManager->flush();
+    }
+
+    public function createInvoice(Invoice $invoice): void
+    {
+        $invoice = new Invoice();
+        $this->entityManager->persist($invoice);
+        $this->entityManager->flush();
+    }
+
+    public function updateInvoice(Invoice $invoice): void
+    {
+        // TODO: Implement updateInvoice() method.
+    }
+
 }

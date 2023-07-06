@@ -27,4 +27,24 @@ class ProductService implements IProductService
                 ->getRepository(Product::class)
                 ->find($id);
     }
+
+    public function deleteProduct(int $id): void
+    {
+        $productReference = $this->entityManager
+            ->getReference(Product::class, $id);
+        $this->entityManager->remove($productReference);
+        $this->entityManager->flush();
+    }
+
+    public function createProduct(Product $product): void
+    {
+        $product = new Product();
+        $this->entityManager->persist($product);
+        $this->entityManager->flush();
+    }
+
+    public function updateProduct(Product $product): void
+    {
+
+    }
 }

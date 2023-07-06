@@ -34,6 +34,17 @@ class Product
     #[ORM\Column(type: 'integer')]
     private int $category;
 
+    /**
+     * @param int $id
+     * @param string $name
+     * @param string $description
+     * @param string $imgUrl
+     * @param int $stock
+     * @param float $price
+     * @param string $brand
+     * @param int $category
+     */
+
     public function getId(): int
     {
         return $this->id;
