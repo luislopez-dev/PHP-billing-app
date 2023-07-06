@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Entities;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 // use Doctrine\DBAL\Types\DecimalType;
 
@@ -39,6 +41,17 @@ class Invoice
 
     #[ORM\Column(type: 'string')]
     private string $address;
+
+    #[ORM\JoinTable(name: 'invoice_products')]
+    #[ORM\JoinColumn(name: 'invoice_id', referencedColumnName: 'id', unique: true)]
+    #[ORM\InverseJoinColumn(name: 'product_id', referencedColumnName: 'id', unique: true)]
+    #[ORM\ManyToMany(targetEntity: Product::class)]
+    private Collection $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -199,4 +212,21 @@ class Invoice
     {
         $this->address = $address;
     }
+
+    /**
+     * @return Collection
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param Collection $products
+     */
+    public function setProducts(Collection $products): void
+    {
+        $this->products = $products;
+    }
+
 }
