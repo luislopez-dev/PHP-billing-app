@@ -11,6 +11,7 @@ use Twig\Environment;
 class InvoicingController
 {
     private IInvoicingService $invoicingService;
+
     public function __construct(IInvoicingService $invoiceService, public Environment $twig)
     {
         $this->invoicingService = $invoiceService;
