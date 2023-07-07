@@ -14,9 +14,6 @@ class InvoicingService implements IInvoicingService
         $this->entityManager = $entityManager;
     }
 
-    /**
-     * @throws NotSupported
-     */
     public function getInvoices(): array|object
     {
         return $this->entityManager
