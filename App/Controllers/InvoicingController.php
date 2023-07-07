@@ -41,7 +41,6 @@ class InvoicingController
     }
 
     public function create(Request $request) : void {
-
     }
 
     public function destroy(int $id) : Response {

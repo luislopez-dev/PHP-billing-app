@@ -41,7 +41,6 @@ class InvoicingService implements IInvoicingService
 
     public function createInvoice(Invoice $invoice): void
     {
-        $invoice = new Invoice();
         $this->entityManager->persist($invoice);
         $this->entityManager->flush();
     }

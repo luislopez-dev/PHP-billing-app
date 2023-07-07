@@ -28,12 +28,8 @@ class DoctrineConfig
      * @throws MissingMappingDriverImplementation
      */
     private function setupEntityManager(): void {
-        $this->dotenv->load();
 
-        $dbHost = $_ENV['DB_HOST'];
-        $dbUsername = $_ENV['DB_USERNAME'];
-        $dbPassword = $_ENV['DB_PASSWORD'];
-        $dbName = $_ENV['DB_NAME'];
+        $this->dotenv->load();
 
         $config = ORMSetup::createAttributeMetadataConfiguration(
             paths: [__DIR__, 'App/Entities'],
@@ -41,10 +37,10 @@ class DoctrineConfig
         );
         $connection = DriverManager::getConnection([
             'driver' => 'pdo_mysql',
-            'host' => $dbHost,
-            'dbname' => $dbName,
-            'user' => $dbUsername,
-            'password' => $dbPassword
+            'host' => $_ENV['DB_HOST'],
+            'dbname' => $_ENV['DB_NAME'],
+            'user' => $_ENV['DB_USERNAME'],
+            'password' => $_ENV['DB_PASSWORD']
         ]);
 
         $this->entityManager = new EntityManager($connection, $config);
