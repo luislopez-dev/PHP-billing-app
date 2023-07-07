@@ -13,11 +13,13 @@ class ProductService implements IProductService
     {
         $this->entityManager = $entityManager;
     }
+
     public function getProducts() : array|object {
         return $this->entityManager
             ->getRepository(Product::class)
             ->findAll();
     }
+
     public function getProductById(int $id): Product
     {
         return $this->entityManager
