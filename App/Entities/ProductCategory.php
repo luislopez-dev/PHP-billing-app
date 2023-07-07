@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 class ProductCategory
 {
     private int $id;
+
     private string $name;
 
     /**
