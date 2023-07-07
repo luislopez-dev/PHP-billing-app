@@ -14,19 +14,12 @@ class DoctrineConfig
     private Dotenv $dotenv;
     private EntityManager $entityManager;
 
-    /**
-     * @throws Exception|MissingMappingDriverImplementation
-     */
     public function __construct()
     {
         $this->dotenv = Dotenv::createImmutable(__DIR__ . '../../../');
         $this->setupEntityManager();
     }
 
-    /**
-     * @throws Exception
-     * @throws MissingMappingDriverImplementation
-     */
     private function setupEntityManager(): void {
 
         $this->dotenv->load();
