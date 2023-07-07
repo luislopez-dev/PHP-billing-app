@@ -41,10 +41,4 @@ class InvoicingService implements IInvoicingService
         $this->entityManager->persist($invoice);
         $this->entityManager->flush();
     }
-
-    public function updateInvoice(Invoice $invoice): void
-    {
-        // TODO: Implement updateInvoice() method.
-    }
-
 }

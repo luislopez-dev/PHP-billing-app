@@ -12,7 +12,5 @@ interface IInvoicingService
 
     public function deleteInvoice(int $id) : void;
 
-    public function updateInvoice(Invoice $invoice) : void;
-
     public function createInvoice(Invoice $invoice) : void;
 }
